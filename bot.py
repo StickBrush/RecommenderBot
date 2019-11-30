@@ -1,5 +1,6 @@
 from telegram.ext import Updater, CommandHandler
 import re
+import os
 
 from model import Anime
 from gateway import get_best_anime
@@ -14,7 +15,7 @@ def recommend_anime(bot, update):
     bot.send_photo(chat_id=chat_id, photo=image, caption=caption)
 
 def main():
-    updater = Updater('822380528:AAHjq1Y1uuCDuWSRaQAW2EChccpl_etiUSQ')
+    updater = Updater(os.environ.get("API_KEY"))
     dispatcher = updater.dispatcher
     dispatcher.add_handler(CommandHandler('recommend', recommend_anime))
     updater.start_polling()
