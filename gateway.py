@@ -32,7 +32,7 @@ def get_best_anime(subtype: Subtype=None) -> Anime:
     endpoint = "top/anime"
     request_url = "{}/{}".format(API_BASE_PATH, endpoint)
     if subtype is not None:
-        request_url = "{}/{}".format(request_url, subtype.value)
+        request_url = "{}/1/{}".format(request_url, subtype.value)
     api_response = requests.get(request_url)
     if api_response is not None:
         logging.debug('API response: {}'.format(api_response.json()))
