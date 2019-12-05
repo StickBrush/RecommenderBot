@@ -43,9 +43,9 @@ def main():
     updater = Updater(os.environ.get("API_KEY"))
     debug_log = os.environ.get('DEBUG_LOG', None)
     if debug_log is not None:
-        logging.basicConfig(logging.DEBUG)
+        logging.basicConfig(level=logging.DEBUG)
     else:
-        logging.basicConfig(logging.INFO)
+        logging.basicConfig(level=logging.INFO)
     dispatcher = updater.dispatcher
     dispatcher.add_handler(CommandHandler('recommend', recommend_anime))
     dispatcher.add_handler(CommandHandler('airing', recommend_airing_anime))
