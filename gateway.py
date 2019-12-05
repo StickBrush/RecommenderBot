@@ -1,6 +1,7 @@
 import requests
 from enum import Enum
 from random import randrange
+import logging
 
 from model import Anime
 
@@ -34,6 +35,7 @@ def get_best_anime(subtype: Subtype=None) -> Anime:
         request_url = "{}/{}".format(request_url, subtype.value)
     api_response = requests.get(request_url)
     if api_response is not None:
+        logging.debug('API response: {}'.format(api_response.json()))
         json_response = api_response.json()
         shows = json_response['top']
         show_ndx = randrange(0, len(shows))
